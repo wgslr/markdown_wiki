@@ -11,8 +11,6 @@ Default target is `../rendered` relative to the wikiroot directory (see above). 
 # Dependencies
 This script requires commands `pandoc` and `realpath` to be available. 
 
-# Examples
-
 # License
 
 MIT license (see file LICENSE for copy).
