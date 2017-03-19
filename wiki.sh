@@ -6,7 +6,6 @@
 
 
 
-
 # folder to create files in, relative to wikiroot
 TARGET=${1:-"../rendered"}
 

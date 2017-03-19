@@ -8,6 +8,9 @@ The script traverses filesystem upwards from current directory until it find a d
 Default target is `../rendered` relative to the wikiroot directory (see above). Another target directory can be given in commandline as the first argument.  
 **warning**: all contents of the target directory will be deleted prior to conversion
 
+## Styles
+Place file `styles.css` in the wikiroot directory and they will be used in the resulting html files.
+
 # Dependencies
 This script requires commands `pandoc` and `realpath` to be available. 
 
