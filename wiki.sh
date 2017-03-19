@@ -47,7 +47,7 @@ if [ -d "$TARGET" ]; then
 fi
 
 # replicate directory structure
-find \( -iwholename "./$TARGET" -o -iname ".?*" \) -prune -o -type d					-exec mkdir -p "$TARGET/{}" \;
+find \( -iwholename "./$TARGET" -o -iname ".?*" \) -prune -o -type d			-exec mkdir -p "$TARGET/{}" \;
 
 # symlink data files
 find \( -iwholename "./$TARGET" -o -iname ".?*" \) -prune -o -type f ! -iname "*.md"	-exec ln -fsr "{}" "$TARGET/{}" \;
@@ -56,7 +56,7 @@ find \( -iwholename "./$TARGET" -o -iname ".?*" \) -prune -o -type f ! -iname "*
 #find \( -iwholename "./$TARGET" -o -iname ".?*" \) -prune -o -type f ! -iname "*.md"	-exec ln -f "{}" "$TARGET/{}" \;
 
 # convert markdown files
-find \( -iwholename "./$TARGET" -o -iname ".?*" \) -prune -o -type f -iname "*.md"		-exec bash -c 'render "{}"' \;
+find \( -iwholename "./$TARGET" -o -iname ".?*" \) -prune -o -type f -iname "*.md"	-exec bash -c 'render "{}"' \;
 
 if [ -f "$CSS" ]; then 
 	cp "$CSS" "$TARGET/$CSS" --remove-destination
