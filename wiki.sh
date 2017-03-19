@@ -7,31 +7,27 @@
 
 
 
-
-
 # folder to create files in, relative to wikiroot
+TARGET=${1:-"../rendered"}
 
 # export to access variables in subshell invoked by find -exec
-
-TARGET=${1:-"../rendered"}
 export TARGET=${TARGET%/} # remove trailing slash
 export CSS="styles.css"
 
-# converts to html
-# argument: source path as given by find
+# function converting specified file
+# argument: source path, as given by find
 function render {
 	# find the target dirname
 	DIRNAME=`dirname "$TARGET/$1"`
+	FILE="$TARGET/${1%.md}" # remove trailing .md
 
 	# path to css realtive to target file
 	CSS=`realpath --relative-to "$DIRNAME" "$TARGET"`"/$CSS"
 
 	# convert
-	FILE="$TARGET/${1%.md}" # remove trailing .md
 	pandoc --toc -Ss -t html "$1" -o "$FILE" -c "$CSS" --columns 1000
 }
-# make function accessible in subshell
-export -f render
+export -f render # make function accessible in subshell
 
 # find wiki root
 ORG_ROOT=`pwd`
