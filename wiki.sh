@@ -24,7 +24,7 @@ function render {
 	CSS=`realpath --relative-to "$DIRNAME" "$TARGET"`"/$CSS"
 
 	# convert
-	pandoc --toc -Ss -t html "$1" -o "$FILE" -c "$CSS" --columns 1000
+	pandoc --toc -Ss -t html "$1" -o "$FILE.htm" -c "$CSS" --columns 1000
 }
 export -f render # make function accessible in subshell
 
@@ -33,8 +33,8 @@ ORG_ROOT=`pwd`
 ROOT=`pwd`
 while [ ! -f '.wikiroot' ]; do
 	if [ "$ROOT" == '/' ]; then
-		cd "$ORG_ROOT"
-		ROOT="$ORG_ROOT"
+		echo "No .wikiroot"
+		exit
 		break
 	else
 		cd ..
